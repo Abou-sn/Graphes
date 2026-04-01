@@ -19,5 +19,9 @@ public class ClientGraphe {
             System.out.println(tabGraphes[i]);
         }
 
+        Graphe g1 = tabGraphes[0]; Graphe g2 = tabGraphes[1]; Graphe g3 = tabGraphes[2];
+
+
+
     }
 }

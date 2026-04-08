@@ -2,6 +2,7 @@ package modele;
 
 import java.util.Map;
 import java.util.Set;
+import org.javatuples.Pair;
 
 public class Graphe {
     private String fichier;
@@ -52,6 +53,24 @@ public class Graphe {
     }
 
     /**
+     * Methode retournanr un tuple contenant le degré minimum et maximum du graphe
+     * @return un objet de type Pair
+     */
+    public Pair degreMinDegreMax(){
+        int min = sommets.get(0).size(); // On initialise la taille min
+        for(int s : sommets.keySet()){
+            if (sommets.get(s).size()<min) min = sommets.get(s).size();
+        }
+
+        int max = sommets.get(0).size();
+        for(int s : sommets.keySet()){
+            if (sommets.get(s).size()>max) max = sommets.get(s).size();
+        }
+
+        return new Pair<Integer, Integer>(min,max);
+    }
+
+    /**
      * Affiche le conteny de la Map dans un string
      * @return String
      */
@@ -59,9 +78,10 @@ public class Graphe {
         String affichage ="";
         String graphe = sommets.toString();
         String ordre = "Ordre "+ordre();
+        String degres = "Degré min : "+degreMinDegreMax().getValue(0) +" -- Degré max : "+degreMinDegreMax().getValue(1);
         String taille = "Taille "+taille();
 
-        affichage += "Fichier : "+fichier+"\n"+ordre+" - "+taille+"\n";
+        affichage += "Fichier : "+fichier+"\n"+ordre+" - "+taille+"\n"+degres+"\n";
 
         for (int s : sommets.keySet()){
             String ligne = "Sommet "+s+" — degré "+degre(s)+", voisins : "+sommets.get(s)+"\n";

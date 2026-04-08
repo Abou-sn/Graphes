@@ -2,6 +2,9 @@ package modele;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
 import org.javatuples.Pair;
 
 public class Graphe {
@@ -17,6 +20,14 @@ public class Graphe {
         this.fichier = file;
         this.sommets = nodes;
     }
+
+//    /**
+//     * Constructeur qui prend en paramètre un ensemble contenant les sommets et leurs voisins.
+//     * @param nodes Un objet de type Map, contenant les sommets en clés et l'ensemble de leurs voisins en valeurs.
+//     */
+//    public Graphe (Map <Integer, Set<Integer>> nodes){
+//        this.sommets = nodes;
+//    }
 
     public Map<Integer, Set<Integer>> getSommets() {
         return sommets;
@@ -51,7 +62,6 @@ public class Graphe {
 
         return somme_degre/2;
     }
-
     /**
      * Methode retournanr un tuple contenant le degré minimum et maximum du graphe
      * @return un objet de type Pair
@@ -68,6 +78,40 @@ public class Graphe {
         }
 
         return new Pair<Integer, Integer>(min,max);
+    }
+
+    public static Graphe grapheComplet(int n){
+        TreeMap<Integer, Set<Integer>> l_voisins =  new TreeMap<Integer, Set<Integer>>();
+
+        for(int i = 0 ; i<n ; i++) l_voisins.put(i, new TreeSet<Integer>());
+
+        for(int i = 0 ; i<n ; i++){
+            for (int j = 0 ; j<n ;j++ ){
+                if (j != i) l_voisins.get(i).add(j);
+            }
+        }
+
+        return new Graphe("Graphe Complet d'odre "+n,l_voisins);
+    }
+
+    public static Graphe cycle(int n){
+        TreeMap<Integer, Set<Integer>> l_voisins =  new TreeMap<Integer, Set<Integer>>();
+
+        for(int i = 0 ; i<n ; i++) l_voisins.put(i, new TreeSet<Integer>());
+
+        for(int i = 0 ; i<n ; i++){
+                if (i == 0) {
+                    l_voisins.get(i).add(n-1);
+                    l_voisins.get(i).add(i+1);
+                } else if (i == n-1) {
+                    l_voisins.get(i).add(i-1);
+                    l_voisins.get(i).add(0);
+
+                }
+        }
+
+        return new Graphe("Cycle d'ordre : "+n,l_voisins);
+
     }
 
     /**

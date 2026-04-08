@@ -14,11 +14,19 @@ public class ClientGraphe {
             tabGraphes[i] = LectureGraphe.lecture(new File("data" + File.separator + "graphes" + File.separator + "petits_graphes" + File.separator + "petitgraphe" + (i + 1) + ".txt"));
         }
 
-        for (int i = 0; i < nb; i++){
-            System.out.println(tabGraphes[i]);
-        }
+//        for (int i = 0; i < nb; i++){
+//            System.out.println(tabGraphes[i]);
+//        }
 
         Graphe g1 = tabGraphes[0]; Graphe g2 = tabGraphes[1]; Graphe g3 = tabGraphes[2];
+
+        Graphe grapheComplet = Graphe.grapheComplet(5);
+        Graphe cycle = Graphe.cycle(5);
+
+        System.out.println(grapheComplet);
+        System.out.println(cycle);
+
+
 
 
 

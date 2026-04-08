@@ -106,8 +106,8 @@ public class Graphe {
                 } else if (i == n-1) {
                     l_voisins.get(i).add(i-1);
                     l_voisins.get(i).add(0);
-
                 }
+                else {l_voisins.get(i).add(i-1); l_voisins.get(i).add(i+1);}
         }
 
         return new Graphe("Cycle d'ordre : "+n,l_voisins);

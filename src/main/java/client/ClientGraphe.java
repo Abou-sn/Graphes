@@ -15,11 +15,11 @@ public class ClientGraphe {
         }
 
         for (int i = 0; i < nb; i++){
-            System.out.print("Petit Graphe"+(i+1)+" : ");
             System.out.println(tabGraphes[i]);
         }
 
         Graphe g1 = tabGraphes[0]; Graphe g2 = tabGraphes[1]; Graphe g3 = tabGraphes[2];
+
 
 
 

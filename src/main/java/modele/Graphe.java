@@ -61,10 +61,10 @@ public class Graphe {
         String ordre = "Ordre "+ordre();
         String taille = "Taille "+taille();
 
-        affichage += "Graphe"+"graphe"+"\n"+ordre+" - "+taille+"\n";
+        affichage += "Fichier : "+fichier+"\n"+ordre+" - "+taille+"\n";
 
         for (int s : sommets.keySet()){
-            String ligne = "Sommet"+s+" degré "+degre(s)+", voisins : "+sommets.get(s)+"\n";
+            String ligne = "Sommet "+s+" — degré "+degre(s)+", voisins : "+sommets.get(s)+"\n";
             affichage += ligne;
         }
 

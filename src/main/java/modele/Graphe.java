@@ -1,9 +1,6 @@
 package modele;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 import org.javatuples.Pair;
 
@@ -107,11 +104,29 @@ public class Graphe {
 
     }
 
-    TreeMap<Integer,Pair<Integer,Integer>> parcoursEnLargeur(int sommet){
+    public TreeMap<Integer,Pair<Integer,Integer>> parcoursEnLargeur(int depart){
 
         TreeMap<Integer,Pair<Integer,Integer>> predecesseurs = new TreeMap<Integer, Pair<Integer, Integer>>();
+        predecesseurs.put(depart,new Pair(-1,0));
 
+        //La file d'attente des sommets à examiner
+        ArrayList <Integer> fileAttentes = new ArrayList();
+        fileAttentes.add(depart);
 
+        while (!fileAttentes.isEmpty()){
+            int courant = fileAttentes.remove(0);
+            for(Integer voisin : sommets.get(courant)){
+                if(! predecesseurs.containsKey(voisin)){
+                    predecesseurs.put(voisin,
+                            new Pair(courant,predecesseurs.get(courant).getValue1()+1));
+
+                    fileAttentes.add(voisin);
+
+                }
+            }
+        }
+
+        return predecesseurs;
 
     }
 

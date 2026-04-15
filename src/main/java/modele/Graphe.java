@@ -21,13 +21,6 @@ public class Graphe {
         this.sommets = nodes;
     }
 
-//    /**
-//     * Constructeur qui prend en paramètre un ensemble contenant les sommets et leurs voisins.
-//     * @param nodes Un objet de type Map, contenant les sommets en clés et l'ensemble de leurs voisins en valeurs.
-//     */
-//    public Graphe (Map <Integer, Set<Integer>> nodes){
-//        this.sommets = nodes;
-//    }
 
     public Map<Integer, Set<Integer>> getSommets() {
         return sommets;
@@ -114,13 +107,20 @@ public class Graphe {
 
     }
 
+    TreeMap<Integer,Pair<Integer,Integer>> parcoursEnLargeur(int sommet){
+
+        TreeMap<Integer,Pair<Integer,Integer>> predecesseurs = new TreeMap<Integer, Pair<Integer, Integer>>();
+
+
+
+    }
+
     /**
      * Affiche le conteny de la Map dans un string
      * @return String
      */
     public String toString() {
         String affichage ="";
-        String graphe = sommets.toString();
         String ordre = "Ordre "+ordre();
         String degres = "Degré min : "+degreMinDegreMax().getValue(0) +" -- Degré max : "+degreMinDegreMax().getValue(1);
         String taille = "Taille "+taille();

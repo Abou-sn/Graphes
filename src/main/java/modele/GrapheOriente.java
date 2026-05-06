@@ -3,6 +3,7 @@ package modele;
 import java.util.Map;
 import java.util.Set;
 
+
 public class GrapheOriente {
     private String fichier;
     private Map<Integer, Set<Integer>> voisinsSortants;
@@ -17,8 +18,49 @@ public class GrapheOriente {
         voisinsSortants = nodes;
     }
 
-    public String toString()
-    {
-        return voisinsSortants.toString();
+    /**
+     * Retourne le nombre de sommet du graphe, l'odre
+     * @return int
+     */
+    public int ordre(){
+        return voisinsSortants.size();
+    }
+
+    /**
+     * Retourne le nombre de voisin sortants du sommet entré en paramètre, son degré sortant
+     * @param sommet
+     * @return int
+     */
+    public int degre( int sommet){
+        return voisinsSortants.get(sommet).size();
+    }
+
+
+    /**
+     * Retourne la taille du graphe this
+     * @return int
+     */
+    public int taille(){
+        int somme_degre = 0;
+        for (int s : voisinsSortants.keySet()){
+            somme_degre+= degre(s);
+        }
+
+        return somme_degre;
+    }
+
+    public String toString() {
+        String affichage ="";
+        String ordre = "Ordre "+ordre();
+        String taille = "Taille "+taille();
+
+        affichage += "Fichier : "+fichier+"\n"+ordre+" - "+taille+"\n";
+
+        for (int s : voisinsSortants.keySet()){
+            String ligne = "Sommet "+s+" — degré "+degre(s)+", voisins : "+voisinsSortants.get(s)+"\n";
+            affichage += ligne;
+        }
+
+        return affichage;
     }
 }

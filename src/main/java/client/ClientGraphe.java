@@ -22,7 +22,7 @@ public class ClientGraphe {
 
         Graphe grapheComplet = Graphe.grapheComplet(5);
         Graphe cycle = Graphe.cycle(5);
-
+        System.out.println(g1);
         System.out.println(grapheComplet);
         System.out.println(cycle);
 

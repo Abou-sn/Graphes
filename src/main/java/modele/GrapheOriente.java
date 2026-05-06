@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -31,9 +32,10 @@ public class GrapheOriente {
      * @param sommet
      * @return int
      */
-    public int degre( int sommet){
+    public int degreSortants( int sommet){
         return voisinsSortants.get(sommet).size();
     }
+
 
 
     /**
@@ -57,7 +59,7 @@ public class GrapheOriente {
         affichage += "Fichier : "+fichier+"\n"+ordre+" - "+taille+"\n";
 
         for (int s : voisinsSortants.keySet()){
-            String ligne = "Sommet "+s+" — degré "+degre(s)+", voisins : "+voisinsSortants.get(s)+"\n";
+            String ligne = "Sommet "+s+" — degré Sortants "+degreSortants(s)+", voisins : "+voisinsSortants.get(s)+"\n";
             affichage += ligne;
         }
 

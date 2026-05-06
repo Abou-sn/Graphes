@@ -26,6 +26,10 @@ public class ClientGraphe {
         System.out.println(grapheComplet);
         System.out.println(cycle);
 
+        System.out.println(g1.parcoursEnLargeur(0));
+        System.out.println(g2.parcoursEnLargeur(0));
+        System.out.println(g3.parcoursEnLargeur(5));
+
 
 
 

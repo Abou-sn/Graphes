@@ -110,7 +110,7 @@ public class Graphe {
         predecesseurs.put(depart,new Pair(-1,0));
 
         //La file d'attente des sommets à examiner
-        ArrayList <Integer> fileAttentes = new ArrayList();
+        ArrayList <Integer> fileAttentes = new ArrayList<>();
         fileAttentes.add(depart);
 
         while (!fileAttentes.isEmpty()){
@@ -149,7 +149,7 @@ public class Graphe {
 
         return affichage;
 
-    }
+    } 
 
 
 }

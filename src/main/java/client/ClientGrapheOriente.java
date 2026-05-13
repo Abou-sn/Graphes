@@ -17,5 +17,10 @@ public class ClientGrapheOriente {
         for(GrapheOriente g : tabDiGraphes){
             System.out.println(g);
         }
+
+        GrapheOriente g1 = tabDiGraphes[0];
+
+        System.out.println(g1.ordreTopologique());
+
     }
 }

@@ -1,8 +1,6 @@
 package modele;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 public class GrapheOriente {
@@ -36,7 +34,49 @@ public class GrapheOriente {
         return voisinsSortants.get(sommet).size();
     }
 
+    public TreeMap<Integer,Integer> degresEntrants() {
+        TreeMap<Integer,Integer> degreeEntrants = new TreeMap<>();
 
+        for (int s : voisinsSortants.keySet()) {
+            degreeEntrants.put(s, 0);
+        }
+        for (int s : degreeEntrants.keySet()){
+
+            for(int sommet : voisinsSortants.keySet()){
+                if (voisinsSortants.get(sommet).contains(s)) degreeEntrants.put(s,degreeEntrants.get(s)+1);
+            }
+        }
+        return degreeEntrants;
+
+    }
+
+    public List<Integer> ordreTopologique(){
+        LinkedList<Integer> resultat = new LinkedList<>();
+        LinkedList<Integer> file = new LinkedList<>();
+        TreeMap<Integer,Integer> degres = degresEntrants();
+        for(int s : voisinsSortants.keySet()){
+            if (degres.get(s) == 0){
+                file.add(s);
+            }
+        }
+
+        while (!file.isEmpty()){
+            int s = file.removeFirst();
+            resultat.add(s);
+
+            for (int v : voisinsSortants.get(s)){
+                degres.put(v,degres.get(v)-1);
+                if (degres.get(v) == 0) {
+                    file.add(v);
+            }
+
+
+        }
+
+            }
+
+        return resultat;
+    }
 
     /**
      * Retourne la taille du graphe this
@@ -45,7 +85,7 @@ public class GrapheOriente {
     public int taille(){
         int somme_degre = 0;
         for (int s : voisinsSortants.keySet()){
-            somme_degre+= degre(s);
+            somme_degre+= degreSortants(s);
         }
 
         return somme_degre;
@@ -59,7 +99,7 @@ public class GrapheOriente {
         affichage += "Fichier : "+fichier+"\n"+ordre+" - "+taille+"\n";
 
         for (int s : voisinsSortants.keySet()){
-            String ligne = "Sommet "+s+" — degré Sortants "+degreSortants(s)+", voisins : "+voisinsSortants.get(s)+"\n";
+            String ligne = "Sommet "+s+" — d sortants, "+degreSortants(s)+" | d entrants : "+degresEntrants().get(s)+", voisins sortants : "+voisinsSortants.get(s)+"\n";
             affichage += ligne;
         }
 
